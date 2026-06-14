@@ -19,15 +19,6 @@ def driver():
     yield driver
     driver.quit()
 
-def load_home_page():
-    try:
-        driver.get(HOME_PAGE)
-    except Exception as e:
-        print(f"{inspect.stack()[0][3]}: Could not load home page - {e}")
-        return False
-
-    return True
-
 def element_present(driver, element):
     try:
         WebDriverWait(driver, WAIT_TIME_DEFAULT_SEC).until(

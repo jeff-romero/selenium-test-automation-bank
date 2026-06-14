@@ -51,6 +51,17 @@ def attempt_login_enter_key(driver):
 
     return True
 
+def notified_blank_credentials(driver):
+    try:
+        WebDriverWait(driver, WAIT_TIME_DEFAULT_SEC).until(
+            expected_conditions.text_to_be_present_in_element((By.XPATH, "//p[@class='error']"), "Please enter a username and password.")
+        )
+    except Exception as e:
+        print(f"{inspect.stack()[0][3]}: {e}")
+        return False
+
+    return True
+
 def type_password(driver, password):
     try:
         password_input = driver.find_element(By.XPATH, PASSWORD_INPUT)
@@ -62,25 +73,14 @@ def type_password(driver, password):
 
     return True
 
-
-def test_invalid_username(driver):
+def test_blank_password(driver):
     assert element_present(driver, USERNAME_INPUT) == True
-
     assert type_username(driver, "asd123") == True
-
     assert attempt_login_enter_key(driver) == True
+    assert notified_blank_credentials(driver) == True
 
-    WebDriverWait(driver, WAIT_TIME_DEFAULT_SEC).until(
-        expected_conditions.text_to_be_present_in_element((By.XPATH, "//p[@class='error']"), "Please enter a username and password.")
-    )
-
-def test_invalid_password(driver):
+def test_blank_username(driver):
     assert element_present(driver, PASSWORD_INPUT) == True
-
     assert type_password(driver, "xzc456") == True
-
     assert attempt_login_enter_key(driver) == True
-
-    WebDriverWait(driver, WAIT_TIME_DEFAULT_SEC).until(
-        expected_conditions.text_to_be_present_in_element((By.XPATH, "//p[@class='error']"), "Please enter a username and password.")
-    )
+    assert notified_blank_credentials(driver) == True

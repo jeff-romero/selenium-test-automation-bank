@@ -28,7 +28,7 @@ Reinforce my existing web browser test automation skills by assembling a test pl
     ```
     venv/Scripts/activate.bat
     ```
-    Skip to step 4
+    Skip to step 5
     #### PowerShell
     ```
     <venv_directory>/Scripts/Activate.ps1
@@ -37,7 +37,7 @@ Reinforce my existing web browser test automation skills by assembling a test pl
     ```
     venv/Scripts/Activate.ps1
     ```
-    Skip to step 4
+    Skip to step 5
     ### MacOS/Linux
     ```
     source <venv_directory>/bin/activate
@@ -46,7 +46,7 @@ Reinforce my existing web browser test automation skills by assembling a test pl
     ```
     source venv/bin/activate
     ```
-    Move on to step 4
+    Move on to step 5
 5. Install the required dependencies:
     ### Windows
     ```
